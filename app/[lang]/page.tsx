@@ -9,6 +9,7 @@ import {
   ContactCta,
   HackathonsPreview,
   InstagramFollow,
+  LeadershipCommunity,
   ProofStats,
   SkillsSection,
 } from "@/components/home-sections"
@@ -55,6 +56,8 @@ export default async function Page({
         <AboutSnippet locale={lang} />
         <SectionGap />
         <FeaturedProjects />
+        <SectionGap />
+        <LeadershipCommunity locale={lang} />
         <SectionGap />
         <BooksPreview locale={lang} />
         <SectionGap />

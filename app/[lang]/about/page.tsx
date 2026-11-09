@@ -101,6 +101,12 @@ export default async function Page({
               development, AI products, and entrepreneurship, with a focus on
               building impactful digital solutions.
             </p>
+            <p className="mt-4 max-w-2xl text-balance text-base leading-7 text-muted-foreground">
+              I also lead community initiatives as the Organizer for AWS Student
+              Builder Group at PPG Institute of Technology and as a Co-Organizer
+              for Kotlin User Group Coimbatore, helping students learn, connect,
+              and build together.
+            </p>
           </div>
         </Container>
 

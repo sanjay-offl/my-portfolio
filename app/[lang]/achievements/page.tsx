@@ -17,6 +17,22 @@ export function generateMetadata({ params }: { params: Promise<{ lang: string }>
 
 const certificates = [
   {
+    name: "AWS Student Builder Group Organizer",
+    issuer: "AWS Student Builder Group at PPG Institute of Technology",
+    date: "2025",
+    description:
+      "Selected as Organizer for the AWS student ecosystem community at PPG Institute of Technology, contributing to cloud learning, student engagement, and developer community building.",
+    pdf: null,
+  },
+  {
+    name: "Kotlin User Group Coimbatore Co-Organizer",
+    issuer: "Kotlin User Group Coimbatore",
+    date: "2025",
+    description:
+      "Helped build and grow the Kotlin developer community in Coimbatore through technical events, knowledge sharing, and ecosystem collaboration.",
+    pdf: null,
+  },
+  {
     name: "MSME Registration Certificate",
     issuer: "Ministry of Micro, Small and Medium Enterprises, India",
     date: "2025",

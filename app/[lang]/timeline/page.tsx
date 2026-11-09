@@ -40,6 +40,8 @@ const milestones = [
       "Built DIVYAM accessibility platform",
       "Built ODFE in a 24-hour hackathon — full-stack Cafe POS system",
       "Participated in a Design Thinking and Creativity workshop",
+      "Selected as Organizer for AWS Student Builder Group at PPG Institute of Technology",
+      "Became Co-Organizer for Kotlin User Group Coimbatore",
       "Attended GDG Coimbatore events",
       "IIT Bombay E-Summit — I-Hack Finalist (Google AdMob Track)",
       "GreenSprout: MSME Registration approved",
@@ -53,6 +55,7 @@ const milestones = [
     items: [
       "GDG Coimbatore Hackathon (Aug 8–9) — built UrbanMind",
       "Ranked 61st nationally in the Odoo Hackathon",
+      "Continue leading AWS and Kotlin community initiatives for student learning and developer engagement",
       "Evaluating Eureka! 2026 (IIT Bombay) with EcoReboot",
       "Writing second book: EPSALIPM",
     ],

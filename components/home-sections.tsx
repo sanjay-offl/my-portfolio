@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowLink } from "@/components/arrow-link"
 import { Container } from "@/components/grid-container"
@@ -63,6 +64,105 @@ export async function AboutSnippet({ locale }: { locale: Locale }) {
   )
 }
 
+const leadershipCommunities = [
+  {
+    name: "AWS Student Builder Group",
+    organization: "PPG Institute of Technology",
+    role: "Organizer",
+    status: "Selected",
+    description:
+      "Contributing to the AWS student ecosystem through cloud learning, technology initiatives, student engagement and developer community building.",
+    href: "https://www.meetup.com/aws-sbg-at-ppg-institute-of-technology",
+    logo: "/assets/community/aws-student-builder-group.png",
+    logoAlt: "AWS Student Builder Group logo",
+  },
+  {
+    name: "Kotlin User Group Coimbatore",
+    organization: "Kotlin User Group Coimbatore",
+    role: "Co-Organizer",
+    description:
+      "Helping build and grow the Kotlin developer community in Coimbatore through technical events, developer collaboration, knowledge sharing and ecosystem engagement.",
+    href: "https://kotlincoimbatore.live/",
+    logo: "/assets/community/kotlin-user-group-coimbatore.png",
+    logoAlt: "Kotlin User Group Coimbatore logo",
+  },
+]
+
+export async function LeadershipCommunity({ locale }: { locale: Locale }) {
+  return (
+    <Container>
+      <div className="border-y border-line">
+        <div className="border-b border-line p-8 md:p-10">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            Leadership & community
+          </p>
+          <h2 className="mt-3 max-w-2xl text-3xl tracking-tight md:text-4xl">
+            Building connected developer communities.
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {leadershipCommunities.map((community, i) => (
+            <article
+              key={community.name}
+              className={
+                "group flex h-full flex-col p-8 transition-transform duration-200 hover:-translate-y-1 md:p-10 " +
+                (i > 0 ? "border-t border-line md:border-l md:border-t-0" : "")
+              }
+            >
+              <div className="flex items-center justify-between gap-4 pb-5">
+                <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border border-line bg-zinc-50/80 p-3 dark:bg-zinc-950/60">
+                  <Image
+                    src={community.logo}
+                    alt={community.logoAlt}
+                    width={112}
+                    height={112}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                {community.status ? (
+                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
+                    {community.status}
+                  </span>
+                ) : null}
+              </div>
+
+              <div className="mt-1">
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                  {community.organization}
+                </p>
+                <h3 className="mt-3 text-2xl tracking-tight md:text-[2rem]">
+                  {community.name}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/80">
+                  {community.role}
+                </p>
+              </div>
+
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                {community.description}
+              </p>
+
+              <a
+                href={community.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-6 inline-flex items-center gap-2 self-start"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground">
+                  Visit Community
+                </span>
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-line bg-zinc-100 text-base text-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 dark:bg-zinc-900">
+                  ↗
+                </span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </Container>
+  )
+}
+
 export async function BooksPreview({ locale }: { locale: Locale }) {
   return (
     <Container>
@@ -79,33 +179,35 @@ export async function BooksPreview({ locale }: { locale: Locale }) {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2">
-          {books.map((book, i) => (
-            <div
-              key={book.slug}
-              className={
-                "p-8 md:p-10 " +
-                (i > 0 ? "border-t border-line md:border-l md:border-t-0" : "")
-              }
-            >
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
-                {book.status}
-              </p>
-              <h3 className="mt-3 font-serif text-2xl tracking-tight md:text-3xl">
-                {book.title}
-              </h3>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                {book.availability}
-              </p>
-              <Link
-                href={book.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group mt-6 inline-block"
+          {books
+            .filter((book) => book.slug !== "why-men-walk-so-far")
+            .map((book, i) => (
+              <div
+                key={book.slug}
+                className={
+                  "p-8 md:p-10 " +
+                  (i > 0 ? "border-t border-line md:border-l md:border-t-0" : "")
+                }
               >
-                <ArrowLink>{book.cta}</ArrowLink>
-              </Link>
-            </div>
-          ))}
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                  {book.status}
+                </p>
+                <h3 className="mt-3 font-serif text-2xl tracking-tight md:text-3xl">
+                  {book.title}
+                </h3>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                  {book.availability}
+                </p>
+                <Link
+                  href={book.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-6 inline-block"
+                >
+                  <ArrowLink>{book.cta}</ArrowLink>
+                </Link>
+              </div>
+            ))}
         </div>
       </div>
     </Container>

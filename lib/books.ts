@@ -21,4 +21,15 @@ export const books = [
     link: "https://instagram.com/sanjay.hq/",
     cta: "Follow for updates",
   },
+  {
+    slug: "why-men-walk-so-far",
+    title: "Why Men Walk So Far",
+    status: "Writing in progress",
+    availability: "Open community book",
+    cover: "/why-men-walk-so-far.png",
+    description:
+      "We spend our lives chasing something — money, success, freedom, recognition, a better future. This book explores the choices we make, the ambitions that drive us, and the sacrifices hidden behind the lives we build. Different paths. Different dreams. One question that deserves to be asked: what are we really chasing?",
+    link: "https://endless-book-tan.vercel.app/",
+    cta: "Open community book",
+  },
 ] as const
