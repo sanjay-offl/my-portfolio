@@ -19,8 +19,11 @@ const projectLinks = [
 ] as const
 
 const bookLinks = [
-  { label: "A Mayfly's Memory", href: "https://amzn.in/d/01BTpnYV" },
-  { label: "EPSALIPM", href: "/books" },
+  {
+    label: "What I Saw When I Was a Kid",
+    href: "https://endless-book-tan.vercel.app/",
+  },
+  { label: "Why Men Walk So Far", href: "/books", status: "Writing in progress" },
 ] as const
 
 export function SiteFooter({ locale }: { locale: Locale }) {
@@ -96,7 +99,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                     locale={locale}
                     className="text-foreground transition-colors hover:text-muted-foreground"
                   >
-                    {l.label} (coming soon)
+                    {l.label}
+                    {"status" in l ? ` (${l.status})` : ""}
                   </LocalizedLink>
                 ) : (
                   <Link
