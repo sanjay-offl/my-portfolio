@@ -1,6 +1,6 @@
 import React from "react"
 import type { Metadata, Viewport } from "next"
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google"
+import localFont from "next/font/local"
 import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
 
@@ -10,15 +10,20 @@ import { siteConfig, socials } from "@/lib/site"
 
 import "../globals.css"
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
+// Self-hosted (latin subset) variable fonts. Loading them locally instead of
+// via next/font/google avoids build failures when Google Fonts returns
+// extensionless URLs (https://github.com/vercel/next.js/issues/99114).
+const spaceGrotesk = localFont({
+  src: "../fonts/space-grotesk-latin.woff2",
   variable: "--font-sans",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "300 700",
+  display: "swap",
 })
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: "../fonts/jetbrains-mono-latin.woff2",
   variable: "--font-mono",
-  weight: ["300", "400", "500", "700"],
+  weight: "300 700",
+  display: "swap",
 })
 
 const structuredData = [
