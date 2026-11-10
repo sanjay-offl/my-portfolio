@@ -53,21 +53,22 @@ export default async function Page({
               <article
                 key={book.slug}
                 className={
-                  "p-8 md:p-10 " +
+                  "flex flex-col gap-6 p-8 md:flex-row md:gap-10 md:p-10 " +
                   (i > 0 ? "border-t border-line md:border-l md:border-t-0" : "")
                 }
               >
-                <div className="max-w-sm">
-                  <div className="relative aspect-[3/4] overflow-hidden border border-line bg-secondary/10">
-                    <Image
-                      src={book.cover}
-                      alt={`${book.title} book cover`}
-                      fill
-                      sizes="(min-width: 768px) 25vw, 90vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                <div className="w-full shrink-0 self-start border border-line bg-secondary/10 md:w-2/5">
+                  <Image
+                    src={book.cover}
+                    alt={book.alt}
+                    width={book.width}
+                    height={book.height}
+                    sizes="(min-width: 768px) 25vw, 90vw"
+                    className="h-auto w-full object-contain"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col items-start">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     {book.status}
                   </p>
                   <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em]">
@@ -76,18 +77,24 @@ export default async function Page({
                   <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-accent">
                     {book.availability}
                   </p>
+                  <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                    {book.description}
+                  </p>
+                  {book.link ? (
+                    <Link
+                      href={book.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group mt-6 inline-block"
+                    >
+                      <ArrowLink>{book.cta}</ArrowLink>
+                    </Link>
+                  ) : (
+                    <span className="mt-6" aria-label="Writing in progress">
+                      <ArrowLink>{book.cta}</ArrowLink>
+                    </span>
+                  )}
                 </div>
-                <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                  {book.description}
-                </p>
-                <Link
-                  href={book.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group mt-6 inline-block"
-                >
-                  <ArrowLink>{book.cta}</ArrowLink>
-                </Link>
               </article>
             ))}
           </div>

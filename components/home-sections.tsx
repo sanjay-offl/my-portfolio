@@ -180,7 +180,11 @@ export async function BooksPreview({ locale }: { locale: Locale }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2">
           {books
-            .filter((book) => book.slug !== "why-men-walk-so-far")
+            .filter(
+              (book) =>
+                book.slug !== "why-men-walk-so-far" &&
+                book.slug !== "what-i-saw-when-i-was-a-kid",
+            )
             .map((book, i) => (
               <div
                 key={book.slug}
@@ -198,14 +202,20 @@ export async function BooksPreview({ locale }: { locale: Locale }) {
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
                   {book.availability}
                 </p>
-                <Link
-                  href={book.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group mt-6 inline-block"
-                >
-                  <ArrowLink>{book.cta}</ArrowLink>
-                </Link>
+                {book.link ? (
+                  <Link
+                    href={book.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-6 inline-block"
+                  >
+                    <ArrowLink>{book.cta}</ArrowLink>
+                  </Link>
+                ) : (
+                  <span className="mt-6" aria-label="Writing in progress">
+                    <ArrowLink>{book.cta}</ArrowLink>
+                  </span>
+                )}
               </div>
             ))}
         </div>
